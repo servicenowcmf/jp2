@@ -1,0 +1,1052 @@
+ServiceNowCloudBlueprint:
+  name: SimpleUbuntuVM
+  category: Compute
+  deploymentModel:
+    resources:
+    - resource: AWS Datacenter
+      resourceblock: ServiceNow::AWS Datacenter
+    - resource: Virtual Server
+      resourceblock: ServiceNow::Virtual Server
+      host: AWS Datacenter
+  operations:
+  - operation: Provision
+    flowDirection: BottomsUp
+    resourceOperations:
+    - name: Blueprint Container Resource.Provision
+      order: '1'
+      resourceBlock: SimpleUbuntuVM Blueprint Resource
+      resourceInterface: SimpleUbuntuVM Resource Interface
+      operation: Provision
+      parameters:
+      - name: StackName
+        defaultValue: ${parameter.StackName}
+        typeOfMap: SingleMap
+        useInOperation: true
+      - name: ResourceGroup
+        defaultValue: ${parameter.ResourceGroup}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: Project
+        defaultValue: ${parameter.Project}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: StartDate
+        defaultValue: ${parameter.StartDate}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: CloudAccount
+        defaultValue: ${parameter.CloudAccount}
+        typeOfMap: SingleMap
+        useInOperation: true
+      - name: UserGroup
+        defaultValue: ${parameter.UserGroup}
+        typeOfMap: SingleMap
+        useInOperation: true
+      - name: WorkloadConfigProvider
+        defaultValue: ${parameter.WorkloadConfigProvider}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: Application
+        defaultValue: ${parameter.Application}
+        typeOfMap: SingleMap
+        useInOperation: true
+      - name: BusinessService
+        defaultValue: ${parameter.BusinessService}
+        typeOfMap: SingleMap
+        useInOperation: true
+      - name: ResourceGroupName
+        defaultValue: ${parameter.ResourceGroupName}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: CreateResourceGroup
+        defaultValue: ${parameter.CreateResourceGroup}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: BillingCode
+        defaultValue: ${parameter.BillingCode}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: Location
+        defaultValue: ${parameter.Location}
+        typeOfMap: SingleMap
+        useInOperation: true
+      - name: EndDate
+        defaultValue: ${parameter.EndDate}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: CostCenter
+        defaultValue: ${parameter.CostCenter}
+        typeOfMap: SingleMap
+        useInOperation: true
+      - name: SubscriptionId
+        defaultValue: ${parameter.SubscriptionId}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: WorkloadConfigProviderType
+        defaultValue: ${parameter.WorkloadConfigProviderType}
+        typeOfMap: SingleMap
+        useInOperation: false
+    - name: Virtual Server.Provision
+      order: '2'
+      resourceBlock: Virtual Server
+      resourceInterface: Virtual Server Interface
+      operation: Provision
+      parameters:
+      - name: ClusterDatastore
+        defaultValue: ${parameter.Virtual_Server_ClusterDatastore}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: NodeCount
+        defaultValue: ${parameter.Virtual_Server_NodeCount}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: IsNATInstance
+        defaultValue: ${parameter.Virtual_Server_IsNATInstance}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: KeyPreference
+        defaultValue: ${parameter.Virtual_Server_KeyPreference}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: CustomSpecName
+        defaultValue: ${parameter.Virtual_Server_CustomSpecName}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: NodeName
+        defaultValue: ${parameter.Virtual_Server_NodeName}
+        typeOfMap: SingleMap
+        useInOperation: true
+      - name: ManagedDisk
+        defaultValue: ${parameter.Virtual_Server_ManagedDisk}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: ExtendedAttributes
+        defaultValue: ${parameter.Virtual_Server_ExtendedAttributes}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: CloudAccount
+        defaultValue: ${parameter.CloudAccount}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: PrimaryNIC
+        defaultValue: ${parameter.Virtual_Server_PrimaryNIC}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: CreateResourceGroup
+        defaultValue: ${parameter.CreateResourceGroup}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: CustomTags
+        defaultValue: ${parameter.Virtual_Server_CustomTags}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: PostInitScript
+        defaultValue: ${parameter.Virtual_Server_PostInitScript}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: SecurityGroupProfile
+        defaultValue: ${parameter.Virtual_Server_SecurityGroupProfile}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: ComputeProfile
+        defaultValue: ${parameter.Virtual_Server_ComputeProfile}
+        typeOfMap: SingleMap
+        useInOperation: true
+      - name: StorageContainer
+        defaultValue: ${parameter.Virtual_Server_StorageContainer}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: SSHKeyName
+        defaultValue: ${parameter.Virtual_Server_SSHKeyName}
+        typeOfMap: SingleMap
+        useInOperation: true
+      - name: SubnetId
+        defaultValue: ${parameter.Virtual_Server_SubnetId}
+        typeOfMap: SingleMap
+        useInOperation: true
+      - name: StorageAccount
+        defaultValue: ${parameter.Virtual_Server_StorageAccount}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: Host
+        defaultValue: ${parameter.Virtual_Server_Host}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: Cluster
+        defaultValue: ${parameter.Virtual_Server_Cluster}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: PrimaryNICProfile
+        defaultValue: ${parameter.Virtual_Server_PrimaryNICProfile}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: StorageAccountType
+        defaultValue: ${parameter.Virtual_Server_StorageAccountType}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: CloudService
+        defaultValue: ${parameter.Virtual_Server_CloudService}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: ServerID
+        defaultValue: ${parameter.Virtual_Server_ServerID}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: IPAddress
+        defaultValue: ${parameter.Virtual_Server_IPAddress}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: IPAddressPool
+        defaultValue: ${parameter.Virtual_Server_IPAddressPool}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: Location
+        defaultValue: ${parameter.Location}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: Datastore
+        defaultValue: ${parameter.Virtual_Server_Datastore}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: DNSSuffix
+        defaultValue: ${parameter.Virtual_Server_DNSSuffix}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: DiscoverAndAttachIP
+        defaultValue: ${parameter.Virtual_Server_DiscoverAndAttachIP}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: OSProfile
+        defaultValue: ${parameter.Virtual_Server_OSProfile}
+        typeOfMap: SingleMap
+        useInOperation: true
+      - name: ExternalNetwork
+        defaultValue: ${parameter.Virtual_Server_ExternalNetwork}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: NetworkInterface
+        defaultValue: ${parameter.Virtual_Server_NetworkInterface}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: Network
+        defaultValue: ${parameter.Virtual_Server_Network}
+        typeOfMap: SingleMap
+        useInOperation: true
+      - name: ResourceGroupName
+        defaultValue: ${parameter.ResourceGroupName}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: ComputeFirewallName
+        defaultValue: ${parameter.Virtual_Server_ComputeFirewallName}
+        typeOfMap: SingleMap
+        useInOperation: true
+      - name: VmFolderName
+        defaultValue: ${parameter.Virtual_Server_VmFolderName}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: AvailabilityZone
+        defaultValue: ${parameter.Virtual_Server_AvailabilityZone}
+        typeOfMap: SingleMap
+        useInOperation: false
+    globalProperties:
+    - name: Virtual_Server_ComputeProfile
+      opUniqueId: '5463'
+      mandatory: true
+      order: 1080
+    - name: CloudAccount
+      opUniqueId: '5357'
+      mandatory: true
+      order: 31
+    - name: Virtual_Server_SSHKeyName
+      opUniqueId: '5463'
+      mandatory: true
+      order: 1922
+    - name: UserGroup
+      opUniqueId: '5357'
+      mandatory: true
+      order: 214
+    - name: Virtual_Server_OSProfile
+      opUniqueId: '5463'
+      mandatory: true
+      order: 1401
+    - name: Virtual_Server_Network
+      opUniqueId: '5463'
+      mandatory: false
+      order: 2692
+    - name: Application
+      opUniqueId: '5357'
+      mandatory: false
+      order: 335
+    - name: BusinessService
+      opUniqueId: '5357'
+      mandatory: false
+      order: 598
+    - name: Location
+      opUniqueId: '5357'
+      mandatory: true
+      order: 82
+    - name: CostCenter
+      opUniqueId: '5357'
+      mandatory: false
+      order: 456
+    - name: Virtual_Server_NodeName
+      opUniqueId: '5463'
+      mandatory: true
+      order: 809
+    - name: Virtual_Server_SubnetId
+      opUniqueId: '5463'
+      mandatory: false
+      order: 2332
+    - name: Virtual_Server_ComputeFirewallName
+      opUniqueId: '5463'
+      mandatory: false
+      order: 3152
+    - name: StackName
+      opUniqueId: '5357'
+      mandatory: true
+      order: 143
+    formBehaviors:
+    - aliasName: SimpleUbuntuVM
+      parentFormBehaviorName: SimpleUbuntuVM
+      catalogName: SimpleUbuntuVM
+      catalogProperties:
+      - catalogProperty: CloudAccount
+        name: CloudAccount
+        parameterTypeName: String
+        defaultValue: ''
+        dataSource: Pools
+        dataSourceValue: ServiceNow::Pools::CloudAccountPool.All
+        uiDataType: Select
+        helpText: ''
+        displayName: CloudAccount
+        displayOrder: 31
+        visibility: true
+        regex: ''
+        opUniqueId: '5357'
+        formUIGroup: General Info
+        mandatory: true
+      - catalogProperty: Location
+        name: Location
+        parameterTypeName: String
+        defaultValue: ''
+        dataSource: Pools
+        dataSourceValue: ServiceNow::Pools::CloudLocationPool.All
+        uiDataType: Select
+        helpText: ''
+        displayName: Location
+        displayOrder: 82
+        visibility: true
+        regex: ''
+        opUniqueId: '5357'
+        formUIGroup: General Info
+        mandatory: true
+      - catalogProperty: StackName
+        name: StackName
+        parameterTypeName: String
+        defaultValue: ''
+        dataSource: Text
+        dataSourceValue: ''
+        uiDataType: TextBox
+        helpText: ''
+        displayName: StackName
+        displayOrder: 143
+        visibility: true
+        regex: ''
+        opUniqueId: '5357'
+        formUIGroup: General Info
+        mandatory: true
+      - catalogProperty: UserGroup
+        name: UserGroup
+        parameterTypeName: String
+        defaultValue: ''
+        dataSource: Pools
+        dataSourceValue: ServiceNow::Pools::UserGroupPool.GroupsUserBelongsTo
+        uiDataType: Select
+        helpText: ''
+        displayName: UserGroup
+        displayOrder: 214
+        visibility: true
+        regex: ''
+        opUniqueId: '5357'
+        formUIGroup: General Info
+        mandatory: true
+      - catalogProperty: Application
+        name: Application
+        parameterTypeName: String
+        defaultValue: ''
+        dataSource: Pools
+        dataSourceValue: ServiceNow::Pools::ApplicationPool.All
+        uiDataType: Select
+        helpText: ''
+        displayName: Application
+        displayOrder: 335
+        visibility: true
+        regex: ''
+        opUniqueId: '5357'
+        formUIGroup: General Info
+        mandatory: false
+      - catalogProperty: CostCenter
+        name: CostCenter
+        parameterTypeName: String
+        defaultValue: ''
+        dataSource: Pools
+        dataSourceValue: ServiceNow::Pools::CostCenterPool.UserCostCenter
+        uiDataType: Select
+        helpText: ''
+        displayName: CostCenter
+        displayOrder: 456
+        visibility: true
+        regex: ''
+        opUniqueId: '5357'
+        formUIGroup: General Info
+        mandatory: false
+      - catalogProperty: BusinessService
+        name: BusinessService
+        parameterTypeName: String
+        defaultValue: ''
+        dataSource: Pools
+        dataSourceValue: ServiceNow::Pools::BusinessServicePool.All
+        uiDataType: Select
+        helpText: ''
+        displayName: BusinessService
+        displayOrder: 598
+        visibility: true
+        regex: ''
+        opUniqueId: '5357'
+        formUIGroup: General Info
+        mandatory: false
+      - catalogProperty: Virtual_Server_NodeName
+        name: Virtual_Server_NodeName
+        parameterTypeName: String
+        defaultValue: ''
+        dataSource: Text
+        dataSourceValue: ''
+        uiDataType: TextBox
+        helpText: ''
+        displayName: Virtual Server NodeName
+        displayOrder: 809
+        visibility: true
+        regex: ''
+        opUniqueId: '5463'
+        formUIGroup: Provision
+        mandatory: true
+      - catalogProperty: Virtual_Server_ComputeProfile
+        name: Virtual_Server_ComputeProfile
+        parameterTypeName: String
+        defaultValue: ''
+        dataSource: Pools
+        dataSourceValue: ServiceNow::Pools::ComputeProfilePool.getByCAAndLDC
+        uiDataType: LookupSelect
+        helpText: ''
+        displayName: Virtual Server ComputeProfile
+        displayOrder: 1080
+        visibility: true
+        regex: ''
+        opUniqueId: '5463'
+        formUIGroup: Provision
+        mandatory: true
+      - catalogProperty: Virtual_Server_OSProfile
+        name: Virtual_Server_OSProfile
+        parameterTypeName: String
+        defaultValue: ''
+        dataSource: Pools
+        dataSourceValue: ServiceNow::Pools::OSProfilePool.getByCAAndLDC
+        uiDataType: LookupSelect
+        helpText: ''
+        displayName: Virtual Server OSProfile
+        displayOrder: 1401
+        visibility: true
+        regex: ''
+        opUniqueId: '5463'
+        formUIGroup: Provision
+        mandatory: true
+      - catalogProperty: Virtual_Server_SSHKeyName
+        name: Virtual_Server_SSHKeyName
+        parameterTypeName: String
+        defaultValue: ''
+        dataSource: Pools
+        dataSourceValue: ServiceNow::Pools::SSHKeyPool.UserKeys
+        uiDataType: Select
+        helpText: ''
+        displayName: Virtual Server SSHKeyName
+        displayOrder: 1922
+        visibility: true
+        regex: ''
+        opUniqueId: '5463'
+        formUIGroup: Provision
+        mandatory: true
+      - catalogProperty: Virtual_Server_SubnetId
+        name: Virtual_Server_SubnetId
+        parameterTypeName: String
+        defaultValue: ''
+        dataSource: Pools
+        dataSourceValue: ServiceNow::Pools::SubnetPool.getByNetwork
+        uiDataType: Select
+        helpText: ''
+        displayName: Virtual Server SubnetId
+        displayOrder: 2332
+        visibility: false
+        regex: ''
+        opUniqueId: '5463'
+        formUIGroup: Provision
+        mandatory: false
+      - catalogProperty: Virtual_Server_Network
+        name: Virtual_Server_Network
+        parameterTypeName: String
+        defaultValue: ''
+        dataSource: Pools
+        dataSourceValue: ServiceNow::Pools::NetworkPool.getByLDC
+        uiDataType: Select
+        helpText: ''
+        displayName: Virtual Server Network
+        displayOrder: 2692
+        visibility: false
+        regex: ''
+        opUniqueId: '5463'
+        formUIGroup: Provision
+        mandatory: false
+      - catalogProperty: Virtual_Server_ComputeFirewallName
+        name: Virtual_Server_ComputeFirewallName
+        parameterTypeName: String
+        defaultValue: ''
+        dataSource: Pools
+        dataSourceValue: ServiceNow::Pools::SecurityGroupPool.getByNetwork
+        uiDataType: Select
+        helpText: ''
+        displayName: Virtual Server ComputeFirewallName
+        displayOrder: 3152
+        visibility: false
+        regex: ''
+        opUniqueId: '5463'
+        formUIGroup: Provision
+        mandatory: false
+      formUIGroups:
+      - name: Provision
+        displayOrder: '1'
+      - name: General Info
+        displayOrder: '0'
+      formEvents:
+      - name: FormLoad
+        type: FormLoad
+        rules:
+        - name: Show Virtual_Server_Network
+          order: 800
+          sourceAttribute: ''
+          actions:
+          - name: Show Virtual Server Network
+            type: Show
+            targetAttributeName: Virtual_Server_Network
+            value: ''
+            order: 100
+            parameterList: []
+          conditions: []
+        - name: MakeNonMandatory Virtual_Server_Network
+          order: 1000
+          sourceAttribute: ''
+          actions:
+          - name: MakeNonMandatory Virtual Server Network
+            type: MakeNonMandatory
+            targetAttributeName: Virtual_Server_Network
+            value: ''
+            order: 100
+            parameterList: []
+          conditions: []
+        - name: TriggerChangeEvent CloudAccount
+          order: 300
+          sourceAttribute: ''
+          actions:
+          - name: TriggerChangeEvent CloudAccount
+            type: TriggerChangeEvent
+            targetAttributeName: CloudAccount
+            value: ''
+            order: 100
+            parameterList: []
+          conditions: []
+        - name: Show Virtual_Server_ComputeFirewallName
+          order: 700
+          sourceAttribute: ''
+          actions:
+          - name: Show Virtual Server ComputeFirewallName
+            type: Show
+            targetAttributeName: Virtual_Server_ComputeFirewallName
+            value: ''
+            order: 100
+            parameterList: []
+          conditions: []
+        - name: MakeNonMandatory Virtual_Server_SubnetId
+          order: 1100
+          sourceAttribute: ''
+          actions:
+          - name: MakeNonMandatory Virtual Server SubnetId
+            type: MakeNonMandatory
+            targetAttributeName: Virtual_Server_SubnetId
+            value: ''
+            order: 100
+            parameterList: []
+          conditions: []
+        - name: Show Virtual_Server_SubnetId
+          order: 900
+          sourceAttribute: ''
+          actions:
+          - name: Show Virtual Server SubnetId
+            type: Show
+            targetAttributeName: Virtual_Server_SubnetId
+            value: ''
+            order: 100
+            parameterList: []
+          conditions: []
+        - name: Reload Quota
+          order: 100
+          sourceAttribute: ''
+          actions:
+          - name: Reload Quota
+            dataSource: Check Quota
+            type: Reload
+            targetAttributeName: Quota
+            value: ''
+            order: 100
+            parameterList:
+            - key: Location
+              value: Location
+            - key: CloudAccount
+              value: CloudAccount
+          conditions: []
+        - name: Reload -  Quota
+          order: 400
+          sourceAttribute: ''
+          actions:
+          - name: Reload Quota
+            dataSource: Check Quota
+            type: Reload
+            targetAttributeName: Quota
+            value: ''
+            order: 100
+            parameterList:
+            - key: CloudAccount
+              value: CloudAccount
+            - key: Location
+              value: Location
+          conditions: []
+      - name: FieldChange
+        type: FieldChange
+        rules:
+        - name: Reload Virtual_Server_OSProfile
+          order: 1700
+          sourceAttribute: Location
+          actions:
+          - name: Reload Virtual Server OSProfile
+            dataSource: Reload From Pool
+            type: Reload
+            targetAttributeName: Virtual_Server_OSProfile
+            value: ''
+            order: 100
+            parameterList:
+            - key: Location
+              value: Location
+            - key: CloudAccount
+              value: CloudAccount
+          conditions: []
+        - name: Reload Virtual_Server_ComputeFirewallName
+          order: 2000
+          sourceAttribute: Virtual_Server_Network
+          actions:
+          - name: Reload Virtual Server ComputeFirewallName
+            dataSource: Reload From Pool
+            type: Reload
+            targetAttributeName: Virtual_Server_ComputeFirewallName
+            value: ''
+            order: 100
+            parameterList:
+            - key: Network
+              value: Virtual_Server_Network
+          conditions: []
+        - name: TriggerChangeEvent Location
+          order: 1400
+          sourceAttribute: CloudAccount
+          actions:
+          - name: TriggerChangeEvent Location
+            type: TriggerChangeEvent
+            targetAttributeName: Location
+            value: ''
+            order: 100
+            parameterList: []
+          conditions: []
+        - name: Reload Virtual_Server_Network
+          order: 1500
+          sourceAttribute: Location
+          actions:
+          - name: Reload Virtual Server Network
+            dataSource: Reload From Pool
+            type: Reload
+            targetAttributeName: Virtual_Server_Network
+            value: ''
+            order: 100
+            parameterList:
+            - key: Location
+              value: Location
+          conditions: []
+        - name: Reload Quota
+          order: 600
+          sourceAttribute: Location
+          actions:
+          - name: Reload Quota
+            dataSource: Check Quota
+            type: Reload
+            targetAttributeName: Quota
+            value: ''
+            order: 100
+            parameterList:
+            - key: Location
+              value: Location
+            - key: CloudAccount
+              value: CloudAccount
+          conditions: []
+        - name: Reload Virtual_Server_ComputeProfile
+          order: 1800
+          sourceAttribute: Location
+          actions:
+          - name: Reload Virtual Server ComputeProfile
+            dataSource: Reload From Pool
+            type: Reload
+            targetAttributeName: Virtual_Server_ComputeProfile
+            value: ''
+            order: 100
+            parameterList:
+            - key: Location
+              value: Location
+            - key: CloudAccount
+              value: CloudAccount
+          conditions: []
+        - name: Reload Quota
+          order: 500
+          sourceAttribute: UserGroup
+          actions:
+          - name: Reload Quota
+            dataSource: Check Quota
+            type: Reload
+            targetAttributeName: Quota
+            value: ''
+            order: 100
+            parameterList:
+            - key: Location
+              value: Location
+            - key: CloudAccount
+              value: CloudAccount
+          conditions: []
+        - name: Reload Virtual_Server_SubnetId
+          order: 1900
+          sourceAttribute: Virtual_Server_Network
+          actions:
+          - name: Reload Virtual Server SubnetId
+            dataSource: Reload From Pool
+            type: Reload
+            targetAttributeName: Virtual_Server_SubnetId
+            value: ''
+            order: 100
+            parameterList:
+            - key: Network
+              value: Virtual_Server_Network
+          conditions: []
+        - name: Reload Virtual_Server_SubnetId
+          order: 1600
+          sourceAttribute: Location
+          actions:
+          - name: Reload Virtual Server SubnetId
+            dataSource: Reload From Pool
+            type: Reload
+            targetAttributeName: Virtual_Server_SubnetId
+            value: ''
+            order: 100
+            parameterList:
+            - key: Network
+              value: Virtual_Server_Network
+          conditions: []
+        - name: Reload Virtual_Server_ComputeFirewallName
+          order: 1300
+          sourceAttribute: CloudAccount
+          actions:
+          - name: Reload Virtual Server ComputeFirewallName
+            dataSource: Reload From Pool
+            type: Reload
+            targetAttributeName: Virtual_Server_ComputeFirewallName
+            value: ''
+            order: 100
+            parameterList:
+            - key: Network
+              value: Virtual_Server_Network
+          conditions: []
+        - name: Reload Location
+          order: 1200
+          sourceAttribute: CloudAccount
+          actions:
+          - name: Reload Location
+            dataSource: Reload Cloud Location
+            type: Reload
+            targetAttributeName: Location
+            value: ''
+            order: 100
+            parameterList:
+            - key: CloudAccount
+              value: CloudAccount
+          conditions: []
+  - operation: Start
+    flowDirection: BottomsUp
+    resourceOperations:
+    - name: Blueprint Container Resource.Start
+      order: '1'
+      resourceBlock: SimpleUbuntuVM Blueprint Resource
+      resourceInterface: SimpleUbuntuVM Resource Interface
+      operation: Start
+    - name: Virtual Server.Start
+      order: '2'
+      resourceBlock: Virtual Server
+      resourceInterface: Virtual Server Interface
+      operation: Start
+      parameters:
+      - name: State
+        defaultValue: ${parameter.State}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: CloudAccount
+        defaultValue: ${parameter.CloudAccount}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: EnableMonitoring
+        defaultValue: ${parameter.Virtual_Server_EnableMonitoring}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: Location
+        defaultValue: ${parameter.Location}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: NodeAddress
+        defaultValue: ${parameter.Virtual_Server_NodeAddress}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: ServerID
+        defaultValue: ${Stack.items[Virtual Server].attributes[sys_id]}
+        typeOfMap: SingleMap
+        useInOperation: true
+    globalProperties:
+    - name: Virtual_Server_ServerID
+      opUniqueId: '1049'
+      mandatory: true
+      order: 1111
+    formBehaviors:
+    - aliasName: SimpleUbuntuVM Start
+      parentFormBehaviorName: SimpleUbuntuVM
+      catalogName: Start
+      catalogProperties:
+      - catalogProperty: Virtual_Server_ServerID
+        name: Virtual_Server_ServerID
+        parameterTypeName: String
+        defaultValue: ''
+        dataSource: Text
+        dataSourceValue: ''
+        uiDataType: Hidden
+        helpText: ''
+        displayName: Virtual Server ServerID
+        displayOrder: 1111
+        visibility: true
+        regex: ''
+        opUniqueId: '1049'
+        formUIGroup: Start
+        mandatory: true
+      formUIGroups:
+      - name: General Info
+        displayOrder: '0'
+      - name: Start
+        displayOrder: '1'
+      formEvents:
+      - name: FormLoad
+        type: FormLoad
+        rules: []
+      - name: FieldChange
+        type: FieldChange
+        rules: []
+  - operation: Stop
+    flowDirection: BottomsUp
+    resourceOperations:
+    - name: Blueprint Container Resource.Stop
+      order: '1'
+      resourceBlock: SimpleUbuntuVM Blueprint Resource
+      resourceInterface: SimpleUbuntuVM Resource Interface
+      operation: Stop
+    - name: Virtual Server.Stop
+      order: '2'
+      resourceBlock: Virtual Server
+      resourceInterface: Virtual Server Interface
+      operation: Stop
+      parameters:
+      - name: State
+        defaultValue: ${parameter.State}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: ServerID
+        defaultValue: ${Stack.items[Virtual Server].attributes[sys_id]}
+        typeOfMap: SingleMap
+        useInOperation: true
+      - name: CloudAccount
+        defaultValue: ${parameter.CloudAccount}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: LastStartTime
+        defaultValue: ${parameter.Virtual_Server_LastStartTime}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: Location
+        defaultValue: ${parameter.Location}
+        typeOfMap: SingleMap
+        useInOperation: false
+    globalProperties:
+    - name: Virtual_Server_ServerID
+      opUniqueId: '6219'
+      mandatory: true
+      order: 11
+    formBehaviors:
+    - aliasName: SimpleUbuntuVM Stop
+      parentFormBehaviorName: SimpleUbuntuVM
+      catalogName: Stop
+      catalogProperties:
+      - catalogProperty: Virtual_Server_ServerID
+        name: Virtual_Server_ServerID
+        parameterTypeName: String
+        defaultValue: ''
+        dataSource: Text
+        dataSourceValue: ''
+        uiDataType: Hidden
+        helpText: ''
+        displayName: Virtual Server ServerID
+        displayOrder: 11
+        visibility: true
+        regex: ''
+        opUniqueId: '6219'
+        formUIGroup: Stop
+        mandatory: true
+      formUIGroups:
+      - name: Stop
+        displayOrder: '1'
+      - name: General Info
+        displayOrder: '0'
+      formEvents:
+      - name: FieldChange
+        type: FieldChange
+        rules: []
+      - name: FormLoad
+        type: FormLoad
+        rules: []
+  - operation: Deprovision
+    flowDirection: TopDown
+    resourceOperations:
+    - name: Blueprint Container Resource.Deprovision
+      order: '1'
+      resourceBlock: SimpleUbuntuVM Blueprint Resource
+      resourceInterface: SimpleUbuntuVM Resource Interface
+      operation: Deprovision
+    - name: Virtual Server.Deprovision
+      order: '2'
+      resourceBlock: Virtual Server
+      resourceInterface: Virtual Server Interface
+      operation: Deprovision
+      parameters:
+      - name: Location
+        defaultValue: ${parameter.Location}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: LastStartTime
+        defaultValue: ${parameter.Virtual_Server_LastStartTime}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: CloudAccount
+        defaultValue: ${parameter.CloudAccount}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: DNSSuffix
+        defaultValue: ${parameter.Virtual_Server_DNSSuffix}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: State
+        defaultValue: ${parameter.State}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: IPAddressPool
+        defaultValue: ${parameter.Virtual_Server_IPAddressPool}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: ServerID
+        defaultValue: ${Stack.items[Virtual Server].attributes[sys_id]}
+        typeOfMap: SingleMap
+        useInOperation: true
+      - name: EnableMonitoring
+        defaultValue: ${parameter.Virtual_Server_EnableMonitoring}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: NodeAddress
+        defaultValue: ${parameter.Virtual_Server_NodeAddress}
+        typeOfMap: SingleMap
+        useInOperation: false
+      - name: ServerName
+        defaultValue: ${parameter.Virtual_Server_ServerName}
+        typeOfMap: SingleMap
+        useInOperation: false
+    globalProperties:
+    - name: Virtual_Server_ServerID
+      opUniqueId: '1977'
+      mandatory: false
+      order: 11
+    formBehaviors:
+    - aliasName: SimpleUbuntuVM Deprovision
+      parentFormBehaviorName: SimpleUbuntuVM
+      catalogName: Deprovision
+      catalogProperties:
+      - catalogProperty: Virtual_Server_ServerID
+        name: Virtual_Server_ServerID
+        parameterTypeName: String
+        defaultValue: ''
+        dataSource: Text
+        dataSourceValue: ''
+        uiDataType: Hidden
+        helpText: ''
+        displayName: Virtual Server ServerID
+        displayOrder: 11
+        visibility: true
+        regex: ''
+        opUniqueId: '1977'
+        formUIGroup: Deprovision
+        mandatory: false
+      formUIGroups:
+      - name: General Info
+        displayOrder: '0'
+      - name: Deprovision
+        displayOrder: '1'
+      formEvents:
+      - name: FormLoad
+        type: FormLoad
+        rules: []
+      - name: FieldChange
+        type: FieldChange
+        rules: []
+  - operation: Cleanup
+    flowDirection: BottomsUp
+    resourceOperations:
+    - name: Blueprint Container Resource.Cleanup
+      order: '1'
+      resourceBlock: SimpleUbuntuVM Blueprint Resource
+      resourceInterface: SimpleUbuntuVM Resource Interface
+      operation: Cleanup
+    formBehaviors:
+    - aliasName: SimpleUbuntuVM Cleanup
+      parentFormBehaviorName: SimpleUbuntuVM
+      catalogName: Cleanup
+      formUIGroups:
+      - name: Cleanup
+        displayOrder: '1'
+      - name: General Info
+        displayOrder: '0'
+      formEvents:
+      - name: FormLoad
+        type: FormLoad
+        rules: []
+      - name: FieldChange
+        type: FieldChange
+        rules: []
