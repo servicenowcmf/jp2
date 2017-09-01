@@ -1,0 +1,10 @@
+ServiceNowCloudBlueprint:
+  name: SimpleUbuntuVM
+  category: Compute
+  deploymentModel:
+    resources:
+    - resource: AWS Datacenter
+      resourceblock: ServiceNow::AWS Datacenter
+    - resource: Virtual Server
+      resourceblock: ServiceNow::Virtual Server
+      host: AWS Datacenter
